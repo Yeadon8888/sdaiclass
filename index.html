@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI实战培训 - 小白也能学会的AI学习路径</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 640px) {
+            .card-hover:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(139, 92, 246, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <div class="flex items-center">
+                    <span class="text-lg md:text-2xl font-bold gradient-text">AI实战培训</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600 transition text-sm font-medium relative group">
+                        课程介绍
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#curriculum" class="text-gray-700 hover:text-indigo-600 transition text-sm font-medium relative group">
+                        课程大纲
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#instructor" class="text-gray-700 hover:text-indigo-600 transition text-sm font-medium relative group">
+                        讲师介绍
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#enterprise" class="text-gray-700 hover:text-indigo-600 transition text-sm font-medium relative group">
+                        企业内训
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full hover:from-indigo-700 hover:to-purple-700 transition shadow-lg hover:shadow-xl transform hover:scale-105 text-sm font-semibold">
+                        立即咨询
+                    </a>
+                </div>
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <a href="#contact" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg">
+                        咨询
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- 毛玻璃效果容器 -->
+            <div class="hero-glass rounded-3xl md:rounded-[2rem] p-6 md:p-12 lg:p-16 mx-auto max-w-6xl shadow-2xl">
+                <div class="text-center">
+                    <!-- 限时优惠标签 -->
+                    <div class="inline-flex items-center gap-2 bg-white/30 backdrop-blur-md text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold mb-6 md:mb-8 border border-white/40 shadow-xl">
+                        <svg class="w-3 h-3 md:w-4 md:h-4 animate-spin" fill="currentColor" viewBox="0 0 20 20" style="animation-duration: 2s;">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="hidden sm:inline">限时优惠 · 前10家企业享受早鸟价</span>
+                        <span class="sm:hidden">限时优惠</span>
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 md:mb-6 leading-tight px-2">
+                        <span class="block">赋能企业AI转型</span>
+                        <span class="block text-yellow-300 drop-shadow-lg mt-2">提升团队10倍效率</span>
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 md:mb-6 text-white/90 max-w-3xl mx-auto font-medium px-2 leading-relaxed">
+                        专业企业内训服务 · <span class="text-yellow-300 font-bold">定制化课程内容 · 即学即用落地</span>
+                    </p>
+                    <p class="text-sm sm:text-base md:text-lg text-white/80 mb-6 md:mb-10 font-medium px-2">
+                        <span class="font-bold">服务过</span> 十方融海、江泰保险、百度秒哒、华东师范大学 <span class="font-bold text-yellow-300">等50+企业</span> · 满意度 <span class="font-bold text-yellow-300">98%</span>
+                        <span class="hidden sm:inline-flex items-center gap-1"><svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3"></circle></svg>本月已有 8 家企业咨询</span>
+                    </p>
+                    
+                    <!-- CTA按钮区域 -->
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-6 md:mb-10 px-2">
+                        <a href="#contact" class="group relative w-full sm:w-auto bg-white text-indigo-600 px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-yellow-300 hover:text-gray-900 transition-all shadow-2xl transform hover:scale-105 glow-effect text-center">
+                            <span class="relative z-10 flex items-center justify-center gap-2">
+                                立即咨询企业内训方案
+                                <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="#curriculum" class="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/80 text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-semibold text-base md:text-lg hover:bg-white/20 hover:border-white transition text-center">
+                            查看课程大纲
+                        </a>
+                    </div>
+                    
+                    <!-- 特点展示 -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs sm:text-sm text-white/90 pt-6 md:pt-8 border-t border-white/20 px-2">
+                        <div class="flex items-center gap-1.5 md:gap-2">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>畅销书作者授课</span>
+                        </div>
+                        <span class="text-white/40 hidden sm:inline">•</span>
+                        <div class="flex items-center gap-1.5 md:gap-2">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>定制化课程内容</span>
+                        </div>
+                        <span class="text-white/40 hidden sm:inline">•</span>
+                        <div class="flex items-center gap-1.5 md:gap-2">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>即学即用落地</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 痛点共鸣 Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 px-2">您的企业是否面临这些挑战？</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 font-medium px-2">AI时代，不转型的企业正在失去竞争力</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+                <div class="bg-white p-5 md:p-8 rounded-2xl shadow-lg border-l-4 border-red-500 card-hover group">
+                    <div class="flex items-start gap-3 md:gap-5">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5 md:w-7 md:h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-2 md:mb-3">团队效率低下，重复劳动多</h3>
+                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">员工每天重复做同样的工作，效率低还容易出错，人力成本高，产出价值低</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 md:p-8 rounded-2xl shadow-lg border-l-4 border-orange-500 card-hover group">
+                    <div class="flex items-start gap-3 md:gap-5">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5 md:w-7 md:h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-2 md:mb-3">员工AI技能不足，跟不上趋势</h3>
+                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">知道AI很重要，但员工不会用，团队缺乏AI应用能力，不知道如何培养，担心被市场淘汰</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 md:p-8 rounded-2xl shadow-lg border-l-4 border-yellow-500 card-hover group">
+                    <div class="flex items-start gap-3 md:gap-5">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5 md:w-7 md:h-7 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-2 md:mb-3">培训成本高，效果不明显</h3>
+                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">传统培训时间长、成本高，员工学完不会用，培训投入大但转化率低，看不到实际效果</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 md:p-8 rounded-2xl shadow-lg border-l-4 border-indigo-500 card-hover group">
+                    <div class="flex items-start gap-3 md:gap-5">
+                        <div class="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5 md:w-7 md:h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg md:text-xl text-gray-900 mb-2 md:mb-3">缺乏专业AI培训资源</h3>
+                            <p class="text-sm md:text-base text-gray-600 leading-relaxed">找不到合适的AI培训课程，内容不贴合业务场景，无法针对企业需求定制，培训效果差</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-6 md:p-10 text-white text-center shadow-2xl transform hover:scale-[1.02] transition-transform">
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 px-2">如果您面临以上任何挑战，我们的企业内训服务正是为您准备</h3>
+                <p class="text-sm sm:text-base md:text-lg mb-6 md:mb-8 text-white/90 font-medium px-2">一日集训，快速提升团队AI应用能力，根据企业需求定制课程，即学即用落地见效</p>
+                <a href="#contact" class="inline-block bg-white text-indigo-600 px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-yellow-300 hover:text-gray-900 transition shadow-xl transform hover:scale-105">
+                    立即咨询企业内训方案
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI价值展示 Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-2xl md:rounded-3xl p-6 md:p-12 mb-12 md:mb-16 border-2 border-indigo-100 shadow-xl">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-2">企业内训后，您的团队能获得什么？</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 font-medium px-2">不只是学工具，而是获得持续提升的团队能力</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4 md:gap-8">
+                    <div class="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 text-center border border-indigo-100 shadow-lg card-hover">
+                        <div class="text-4xl md:text-6xl font-extrabold gradient-text mb-3 md:mb-4">10倍</div>
+                        <div class="text-gray-700 font-bold mb-2 md:mb-3 text-lg md:text-xl">团队效率提升</div>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium">用AI自动化团队重复工作，节省80%时间成本</p>
+                    </div>
+                    <div class="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 text-center border border-indigo-100 shadow-lg card-hover">
+                        <div class="text-4xl md:text-6xl font-extrabold gradient-text mb-3 md:mb-4">定制化</div>
+                        <div class="text-gray-700 font-bold mb-2 md:mb-3 text-lg md:text-xl">贴合业务场景</div>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium">根据企业实际需求调整课程内容，即学即用落地</p>
+                    </div>
+                    <div class="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 text-center border border-indigo-100 shadow-lg card-hover">
+                        <div class="text-4xl md:text-6xl font-extrabold gradient-text mb-3 md:mb-4">1日</div>
+                        <div class="text-gray-700 font-bold mb-2 md:mb-3 text-lg md:text-xl">快速见效</div>
+                        <p class="text-xs md:text-sm text-gray-600 font-medium">一日集训，快速提升团队AI应用能力，投资回报高</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-2">为什么选择我们的AI培训？</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-medium px-2">
+                    专为企业团队设计，理论与实践相结合，快速掌握AI应用核心技能
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 md:gap-8">
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 md:p-10 rounded-xl md:rounded-2xl card-hover border border-indigo-200">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg mx-auto md:mx-0">
+                        <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 text-center md:text-left">快速上手</h3>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium text-center md:text-left">
+                        一日集训，快速掌握AI核心概念与应用方法，无需技术背景
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 md:p-10 rounded-xl md:rounded-2xl card-hover border border-purple-200">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg mx-auto md:mx-0">
+                        <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 text-center md:text-left">实战导向</h3>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium text-center md:text-left">
+                        涵盖主流AI工具应用与智能体搭建，学完即可应用到实际工作中
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 md:p-10 rounded-xl md:rounded-2xl card-hover border border-pink-200">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg mx-auto md:mx-0">
+                        <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 text-center md:text-left">企业定制</h3>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium text-center md:text-left">
+                        支持企业内训，可根据企业具体需求调整课程内容
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-2">课程大纲</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 font-medium px-2">
+                    系统化的学习路径，从理论认知到实战应用
+                </p>
+            </div>
+
+            <!-- 第一部分：构建认知 & 掌握沟通 -->
+            <div class="mb-12 md:mb-16">
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-xl p-6 md:p-10 mb-6 md:mb-8 border border-gray-100">
+                    <div class="flex items-center mb-6 md:mb-8">
+                        <div class="w-1 h-12 md:w-1.5 md:h-16 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full mr-4 md:mr-6"></div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">第一部分：构建认知 & 掌握沟通</h3>
+                            <p class="text-gray-500 mt-1 md:mt-2 font-medium text-sm md:text-base">理论与心法</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="border-l-4 border-indigo-500 pl-3 md:pl-5 py-2 md:py-3 bg-indigo-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块一：开场与认知破冰</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">课程介绍、AI学习的核心理念与反认知逻辑</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-3 md:pl-5 py-2 md:py-3 bg-indigo-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块二：构建AI的底层认知</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">大模型是什么、AIGC本质、大模型的工作原理（概率接龙）与能力边界</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-3 md:pl-5 py-2 md:py-3 bg-purple-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块三：掌握AI的沟通技巧</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">提示词(Prompt)的本质、CRISPE核心框架、进阶策略（思维链、迭代优化）与学习方法</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-500 pl-3 md:pl-5 py-2 md:py-3 bg-purple-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块四：多模态工具与IP打造</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">AI图片/视频生成（即梦、可灵）、AI数字人与个人IP打造入门</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二部分：主流工具应用 & 智能体搭建 -->
+            <div>
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
+                    <div class="flex items-center mb-6 md:mb-8">
+                        <div class="w-1 h-12 md:w-1.5 md:h-16 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full mr-4 md:mr-6"></div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">第二部分：主流工具应用 & 智能体搭建</h3>
+                            <p class="text-gray-500 mt-1 md:mt-2 font-medium text-sm md:text-base">实战与方法</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="border-l-4 border-blue-500 pl-3 md:pl-5 py-2 md:py-3 bg-blue-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块五：主流AI工具应用 (一)</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">AI搜索（秘塔）、AI知识库（腾讯IMA、秘塔书架）</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-500 pl-3 md:pl-5 py-2 md:py-3 bg-blue-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块六：主流AI工具应用 (二)</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">AI会议纪要（通义听悟、AI好记）、通用超级智能体（Manus、Genspark）</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-cyan-500 pl-3 md:pl-5 py-2 md:py-3 bg-cyan-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块七：扣子(Coze)智能体搭建学习</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">Coze平台介绍、智能体搭建核心概念、(实操) 搭建第一个智能体</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-cyan-500 pl-3 md:pl-5 py-2 md:py-3 bg-cyan-50/50 rounded-r-lg card-hover">
+                            <h4 class="font-bold text-lg md:text-xl text-gray-900 mb-1 md:mb-2">模块八：工具使用心得、总结与Q&A</h4>
+                            <p class="text-gray-600 text-xs md:text-sm font-medium">讲师工具使用心得分享、全天内容总结、开放答疑</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="instructor" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-2">讲师介绍</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 font-medium px-2">
+                    专业的AI智能体专家，丰富的实战经验与教学经验
+                </p>
+            </div>
+
+            <!-- 讲师基本信息 -->
+            <div class="bg-white rounded-xl md:rounded-2xl shadow-xl p-6 md:p-12 mb-8 md:mb-12">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div class="flex-shrink-0 mx-auto md:mx-0">
+                        <img src="images/image_002.jpeg" alt="讲师陈铭毅（伊登）" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-xl md:rounded-2xl shadow-lg">
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">陈铭毅（伊登）</h3>
+                        <p class="text-lg md:text-xl gradient-text font-bold mb-4 md:mb-6">AI智能体专家</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 md:w-5 md:h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm md:text-base text-gray-700">清华出版社《扣子开发AI Agent智能体应用》<span class="inline-flex items-center"><span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-1.5 md:px-2 py-0.5 md:py-1 rounded ml-1 md:ml-2">畅销书</span><span class="whitespace-nowrap">作者</span></span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">华东师范大学特邀智能体专家讲师</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">开源共学社区WaytoAGI AI编程区建设者</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">工信部(杭州)人才技术交流中心合作导师团成员</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">小红书官方【AI新手村文档】上榜作者</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 gradient-text mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">自媒体AI技术博主KOL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 实战经验 -->
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-xl p-10 mb-8 border border-indigo-100">
+                <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+                    <div class="w-1.5 h-12 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full mr-4"></div>
+                    实战经验
+                </h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    伊登是一位横跨<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">人工智能教育与技术开发</mark>的青年专家，大学就读人工智能专业，拥有丰富的<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">生成式AI与智能体开发实战经验</mark>。
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    随着2023-2024年人工智能技术的迅速发展，伊登敏锐地把握住这一时代机遇，深入研究<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">大语言模型及其应用场景</mark>。他专注于<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">AI Agent（智能体）开发与应用</mark>，掌握<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">Coze等主流智能体平台的开发技术</mark>，成功为<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">多家企业和个人开发定制化智能解决方案</mark>。同时，他将自身技术经验与教育培训相结合，在清华出版社出版了《扣子开发AI Agent智能体应用》<span class="inline-block bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded ml-1">畅销书</span>并成为智能体相关重点案例，开发并讲授了一系列高质量的智能体相关课程，尤其在<mark class="bg-yellow-200 text-gray-900 font-bold px-1.5 py-0.5 rounded">青少年AI教育、企业AI提效</mark>方面取得了显著成果。
+                </p>
+            </div>
+
+            <!-- 授课风格 -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <svg class="w-6 h-6 text-purple-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                        </svg>
+                        授课风格
+                    </h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span><strong>聚焦落地，注重实操：</strong>从实际需求出发，注重技术的实际落地应用，让学员能够将所学立即应用到工作中</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span><strong>案例驱动，实战为王：</strong>采用"训战结合"模式，理论讲解与实操演练并重，学员在课程中便能掌握核心技能</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span><strong>清晰易懂，通俗有趣：</strong>授课风格生动活泼，将复杂的技术概念以浅显易懂的方式呈现</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span><strong>工具导向，即学即用：</strong>每堂课都提供实用的AI工具和操作指南，学员在课后能立即应用所学</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        主讲课程
+                    </h3>
+                    <div class="space-y-2 text-gray-700">
+                        <p class="font-semibold text-gray-900 mb-2">通识类：</p>
+                        <p>• AI工具加速营：掌握AI神器，赋能高效工作（1天版）</p>
+                        
+                        <p class="font-semibold text-gray-900 mb-2 mt-4">技能赋能类：</p>
+                        <p>• 青少年AI创新思维与应用（1天/2天版）</p>
+                        <p>• AI驱动内容创作：打造爆款内容自动流水线（1天版）</p>
+                        
+                        <p class="font-semibold text-gray-900 mb-2 mt-4">AI进阶类：</p>
+                        <p>• Coze开发实战：打造提效智能体（1天/2天/3天版）</p>
+                        
+                        <p class="font-semibold text-gray-900 mb-2 mt-4">行业类：</p>
+                        <p>• 智能体赋能教育场景实践（1天/2天/3天版）</p>
+                        <p>• AI + 智能体在企业中的五大场景（半天/1天版）</p>
+                        <p>• 保险行业《引爆效能革命，AI智能体搭建》（1天/2天版）</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 部分服务客户 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <div class="w-1 h-8 bg-gradient-to-b from-blue-600 to-blue-400 rounded-full mr-4"></div>
+                    部分服务客户
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">十方融海</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">江泰保险</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">百度秒哒</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">杭州数字教育港</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">大数据人才基地</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">华东师范大学</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">阿里探哥·风云会</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="font-semibold text-gray-900">知无不言跨境电商</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学员评价 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <div class="w-1 h-8 bg-gradient-to-b from-green-600 to-green-400 rounded-full mr-4"></div>
+                    学员评价
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-8 h-8 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <span class="text-gray-900 font-semibold">学员评价</span>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">
+                            "感谢Yeadon老师分享，已经参加很多次分享了，由浅入深了解Coze，这次的课程了解到了网页开发中的用户界面，和具体业务逻辑，对应的内容和细节，跟随Yeadon老师工作流进行了对应的操作学习，每次听课都可以学习到以前自己操作中的疑惑"
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-8 h-8 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                            </svg>
+                            <span class="text-gray-900 font-semibold">学员评价</span>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">
+                            "Yeadon老师关于教育智能体的分享彻底刷新了我的认知！讲解的几个智能体都是特别实用的，讲解的也特别清楚，一步一步的给我们演示流程。学习完了受益匪浅，原来AI助手已能深度融入教学场景：自动生成学情分析报告、设计分层练习题、创建虚拟助教减轻事务性工作，这些应用案例大大提高了教育人员的工作效率。"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 授课案例（图片展示区域） -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <div class="w-1 h-8 bg-gradient-to-b from-indigo-600 to-indigo-400 rounded-full mr-4"></div>
+                    授课案例
+                </h3>
+                <p class="text-gray-600 mb-6">
+                    以下为部分授课现场照片，展示了在不同场景下的培训案例：
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- 使用提取的图片 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_010.png" alt="杭州数字教育港《DeepSeek+智能体赋能教育场景》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">杭州数字教育港</p>
+                            <p class="text-xs text-gray-600 mt-1">《DeepSeek+智能体赋能教育场景》</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_011.jpeg" alt="杭州工信人才基地《AI智能体培训师研修班》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">杭州工信人才基地</p>
+                            <p class="text-xs text-gray-600 mt-1">《AI智能体培训师研修班》</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_015.jpeg" alt="上海《引爆效能革命，AI智能体搭建》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">上海</p>
+                            <p class="text-xs text-gray-600 mt-1">《引爆效能革命，AI智能体搭建》</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_014.jpeg" alt="厦门《闽商创变 智链全球》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">厦门</p>
+                            <p class="text-xs text-gray-600 mt-1">《闽商创变 智链全球》</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_016.jpeg" alt="线上《百度秒哒直播分享》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">线上</p>
+                            <p class="text-xs text-gray-600 mt-1">《百度秒哒直播分享》</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+                        <img src="images/image_017.jpeg" alt="上海《AIGC驱动老字号品牌换新：实战工坊》" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <p class="text-sm font-semibold text-gray-900">上海</p>
+                            <p class="text-xs text-gray-600 mt-1">《AIGC驱动老字号品牌换新：实战工坊》</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 mt-6 text-center">
+                    更多授课案例请联系微信：yeadon888
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 对比展示 Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">企业内训后，您的团队会发生什么变化？</h2>
+                <p class="text-xl text-gray-600">真实对比，看到改变</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <!-- 学之前 -->
+                    <div class="bg-red-50 p-8 border-r-2 border-red-200">
+                        <div class="text-center mb-6">
+                            <div class="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full font-semibold">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>学之前</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span class="text-gray-700">团队每天重复做同样的工作，耗时又低效，人力成本高</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span class="text-gray-700">员工不会用AI工具，团队缺乏AI应用能力</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span class="text-gray-700">传统培训时间长、成本高，效果不明显</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span class="text-gray-700">担心在AI时代被淘汰，缺乏竞争力</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 学之后 -->
+                    <div class="bg-green-50 p-8">
+                        <div class="text-center mb-6">
+                            <div class="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full font-semibold">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>学之后</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700"><strong class="text-green-600">团队用AI自动化80%重复工作</strong>，整体效率提升10倍，人力成本大幅降低</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700"><strong class="text-green-600">团队掌握AI工具实战应用</strong>，成为行业内的AI应用标杆</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700"><strong class="text-green-600">投资回报高</strong>，一日培训带来长期效率提升，培训成本快速回收</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700"><strong class="text-green-600">竞争优势明显</strong>，在AI时代保持领先，不被市场淘汰</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-12 text-white text-center shadow-2xl transform hover:scale-[1.01] transition-transform">
+                    <h3 class="text-3xl font-bold mb-4">选择企业内训，就是选择团队的未来</h3>
+                    <p class="text-lg mb-8 text-white/90 font-medium">一天时间，换来的是团队持续的效率提升和企业的竞争优势</p>
+                    <a href="#contact" class="inline-block bg-white text-indigo-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 hover:text-gray-900 transition shadow-xl transform hover:scale-105">
+                        立即咨询企业内训方案
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Training Section -->
+    <section id="enterprise" class="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-2xl p-12 border border-indigo-100">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">企业内训服务</h2>
+                    <p class="text-xl mb-12 text-gray-600 font-medium">
+                        定制化的企业内训服务，可根据企业的具体业务需求和发展目标，灵活调整课程内容和培训方案。
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-10 border border-indigo-200 card-hover">
+                            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-3xl font-bold gradient-text mb-3">定制化</div>
+                            <p class="text-gray-600 font-medium">根据企业需求调整课程内容</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-10 border border-purple-200 card-hover">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-3xl font-bold gradient-text mb-3">专业</div>
+                            <p class="text-gray-600 font-medium">实战经验丰富的讲师团队</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-10 border border-pink-200 card-hover">
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-3xl font-bold gradient-text mb-3">高效</div>
+                            <p class="text-gray-600 font-medium">一日集训，快速提升团队AI能力</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-indigo-700 hover:to-purple-700 transition shadow-xl transform hover:scale-105">
+                        咨询企业内训方案
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-12 border-2 border-indigo-100">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-4 px-2">咨询企业内训方案</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-2 font-medium px-2">
+                        添加微信咨询企业内训详情，获取早鸟优惠方案
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl md:rounded-2xl p-6 md:p-12 border-2 border-indigo-200">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mb-6 md:mb-8 shadow-xl">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.496-6.348zM5.785 13.239a.728.728 0 0 1-.418-.13C4.586 12.557 3.758 11.636 3.758 10.136c0-2.51 2.108-4.698 4.933-4.698 2.825 0 4.933 2.187 4.933 4.698 0 1.5-.828 2.42-1.609 2.973a.728.728 0 0 1-.418.13c-.34 0-.636-.208-.804-.487-.513-.857-1.234-1.31-2.104-1.31-.87 0-1.591.453-2.104 1.31-.168.279-.464.487-.804.487zm16.31 4.319c.163.143.272.347.272.568 0 .638-.526 1.188-1.26 1.188h-4.208c-.734 0-1.26-.55-1.26-1.188 0-.22.109-.425.272-.568.51-.453 1.588-1.274 2.422-1.922a.948.948 0 0 1 1.132 0c.834.648 1.912 1.47 2.422 1.922zm-1.53-3.712c-1.459-1.136-3.822-1.136-5.28 0-.297.23-.475.58-.475.958 0 .756.631 1.188 1.382 1.188h3.506c.751 0 1.382-.432 1.382-1.188 0-.378-.178-.728-.475-.958zm-4.288-1.475c.276 0 .543.027.811.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.496-6.348-4.8 0-8.691 3.288-8.691 7.342 0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098c.9.13 1.818.197 2.837.203 1.689.016 3.359-.221 4.956-.686.847-.248 1.674-.565 2.472-.942.847-.399 1.674-.842 2.472-1.329.157-.097.323-.186.489-.282.048-.028.096-.062.144-.09.048-.028.096-.05.144-.076.048-.024.096-.05.144-.07a10.16 10.16 0 0 1 1.857-.56z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="text-center mb-6 md:mb-8">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">微信咨询</h3>
+                            <div class="bg-white rounded-xl px-6 md:px-10 py-3 md:py-5 inline-block shadow-lg border-2 border-indigo-200">
+                                <p class="text-2xl md:text-4xl font-bold gradient-text">yeadon888</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 text-center mb-6 md:mb-10 font-medium text-sm md:text-lg px-2">
+                            扫码添加微信，或搜索微信号 <span class="font-bold gradient-text text-xl md:text-2xl">yeadon888</span>
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-10 text-center w-full max-w-2xl">
+                            <div class="bg-white rounded-xl p-5 md:p-8 border-2 border-indigo-200 shadow-lg card-hover">
+                                <div class="text-2xl md:text-3xl font-bold gradient-text mb-2 md:mb-3">✓</div>
+                                <p class="text-sm md:text-base text-gray-700 font-semibold">企业内训方案咨询</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-5 md:p-8 border-2 border-indigo-200 shadow-lg card-hover">
+                                <div class="text-2xl md:text-3xl font-bold gradient-text mb-2 md:mb-3">✓</div>
+                                <p class="text-sm md:text-base text-gray-700 font-semibold">课程内容定制</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-5 md:p-8 border-2 border-indigo-200 shadow-lg card-hover">
+                                <div class="text-2xl md:text-3xl font-bold gradient-text mb-2 md:mb-3">✓</div>
+                                <p class="text-sm md:text-base text-gray-700 font-semibold">培训时间地点安排</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 满意度保证 -->
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 md:p-10 border-2 border-green-200 shadow-lg w-full max-w-2xl">
+                            <div class="text-center">
+                                <div class="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mb-4 md:mb-6 shadow-xl">
+                                    <svg class="w-8 h-8 md:w-10 md:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">课程满意度百分之百</h3>
+                                <p class="text-sm md:text-base lg:text-lg text-gray-700 font-medium px-2">
+                                    专业的内容设计，确保每一位参与培训的团队都能获得实际价值
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">AI实战培训</h3>
+                    <p class="text-gray-400">
+                        专业的AI应用培训服务，帮助个人和企业快速掌握AI技能
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition">课程介绍</a></li>
+                        <li><a href="#curriculum" class="hover:text-white transition">课程大纲</a></li>
+                        <li><a href="#instructor" class="hover:text-white transition">讲师介绍</a></li>
+                        <li><a href="#enterprise" class="hover:text-white transition">企业内训</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系方式</h3>
+                    <p class="text-gray-400 mb-2">微信：yeadon888</p>
+                    <p class="text-gray-400">支持企业内训定制服务</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AI实战培训. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
